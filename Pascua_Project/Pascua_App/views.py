@@ -2,5 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Welcome to Django!")
+def pet_list(request):
+
+    pets = Pets.objects.all()
+
+    context = {
+        'pets': pets
+    }
+    return render(request, 'VetcareApp/pet_list.html', context)
